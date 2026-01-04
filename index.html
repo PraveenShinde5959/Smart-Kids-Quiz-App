@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Kids Quiz App</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the app */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Optional: Add custom fonts if desired, e.g., via Google Fonts in a real project */
+        /* For this exercise, we rely on default system fonts, but Poppins is a good choice for kids' apps */
+
+        /* Animation for correct answer feedback */
+        @keyframes correct-answer-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0px rgba(0, 255, 0, 0.7); }
+            50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(0, 255, 0, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 0 0px rgba(0, 255, 0, 0.7); }
+        }
+
+        .animate-correct-answer {
+            animation: correct-answer-pulse 0.5s ease-out;
+        }
+
+        /* Animation for wrong answer feedback */
+        @keyframes wrong-answer-shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+
+        .animate-wrong-answer {
+            animation: wrong-answer-shake 0.3s ease-out;
+        }
+
+        /* Confetti particle for celebration */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--color);
+            opacity: 0;
+            animation: confetti-fall 3s ease-out forwards;
+            pointer-events: none;
+            border-radius: 50%; /* Make them round */
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotateZ(0deg) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotateZ(720deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3"
+  }
+}
+</script>
+</head>
+<body class="bg-gradient-to-br from-purple-200 to-blue-200 min-h-screen flex items-center justify-center p-4">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
